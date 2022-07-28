@@ -3,11 +3,10 @@ import styled from 'styled-components';
 
 
 export default function Mark({value}){
-    console.log(value)
     return(
         <Container>
             <pre>{value.weekday} - {value.date}</pre>
-            {value.showtimes.map((time)=> <Link to={"/sessao/"+value.id}><Botton>{time.name}</Botton></Link>)}
+            {value.showtimes.map((time,index)=> <Link key={value.showtimes[index].id} to={"/sessao/"+value.showtimes[index].id}><Botton>{time.name}</Botton></Link>)}
         </Container>
     );
 }

@@ -1,0 +1,8 @@
+.all-films{
+    width: 100%;
+    display: flex;
+    justify-content:space-evenly;
+    flex-wrap: wrap;
+    height: 80vh;
+    overflow: auto;
+}

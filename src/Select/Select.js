@@ -7,7 +7,7 @@ import '../Select/select.css'
 export default function Select(){
     const [objectFilms, setObjectFilms] = useState([]);
     useEffect(() => {
-		const objects = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies");
+		const objects = axios.get("https://mock-api.driven.com.br/api/v7/cineflex/movies");
 		objects.then((answer) => {setObjectFilms(answer.data)});
 	}, []);
     return(

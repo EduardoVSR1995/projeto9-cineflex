@@ -10,7 +10,7 @@ export default function Brand(){
     const {imageId} = useParams();
    const [objectFilm, setObjectFilm] = useState([]);
     useEffect(() => {
-		const objects = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${imageId}/showtimes`);
+		const objects = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/movies/${imageId}/showtimes`);
 		objects.then((answer) => {setObjectFilm(answer.data)});
 	}, []);
     return(

@@ -1,18 +1,29 @@
 import styled from 'styled-components';
 
 
-export default function bottomImg({image,title}){
-    return(
+export default function bottomImg({image,title,obj}){
+    if(obj === undefined ){
+  return(
+  <Img>
+        <h4>   
+            <img src={image}/>
+        </h4>
+        <p>{title}</p>
+    </Img>)
+    }
+    else{
+return(
     <Img>
         <h4>   
             <img src={image}/>
         </h4>
-        <p>{title} </p>
-    </Img>    
-    )
+        <p>{title}{obj.day.weekday.length !=0 ?  " - "+obj.day.weekday+" - " : "" } {obj.name.length  !=0 ? obj.name : "" }</p>
+    </Img> )
+    }
+
 }
 const Img = styled.li`
-box-sizing: border-box;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     padding-left: 20px;

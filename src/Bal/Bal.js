@@ -6,10 +6,15 @@ export default function Bal({value, request , setRequest}){
     const [colorBal, setColorBal] = useState(true);
     function sets(){
         const t = request.ids.length !=0 ?  request.ids.map((e)=>e) : [];
+        const e = request.cadeira.length !=0 ?  request.cadeira.map((e)=>e) : [];
         t.push(value.id)
-        setRequest({...request , ids: t });
+        e.push(value.name);
+        setRequest({...request , ids: t, cadeira: e  });
         setColorBal(!colorBal)
 
+    }
+    function delets(){
+        setRequest({...request , cadeira: request.cadeira.filter((e)=> e != value.name) , ids: request.ids.filter((e)=> e != value.id)});
     }
 
 
@@ -30,7 +35,7 @@ export default function Bal({value, request , setRequest}){
         }
         else{
             return(
-            <BalSelect onClick={()=>{ setRequest({...request , ids: request.ids.filter((e)=> e != value.id )}); setColorBal(!colorBal)}}>
+            <BalSelect onClick={()=>{ delets() ;setColorBal(!colorBal)}}>
                 {value.name}
             </BalSelect>    
             )

@@ -3,6 +3,7 @@ import Banner from '../Banner/Banner'
 import Select from '../Select/Select'
 import Brand from '../Brand/Brand'
 import Chairs from '../Chairs/Chairs'
+import Confirmation from "../Confirmation/Confirmation";
  
 import '../App/reset.css'
 
@@ -14,6 +15,7 @@ export default function App(){
             <Route path="/" element={<Select />} />
             <Route path='/filme/:imageId' element={ <Brand />}/>
             <Route path='/sessao/:sessaoId' element={ <Chairs />}/>
+            <Route path="/sucesso/"element={<Confirmation/>} />
             </Routes>
         </BrowserRouter>
     );

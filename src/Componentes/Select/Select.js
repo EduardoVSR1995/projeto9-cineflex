@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 import TitlePag from '../TitlePag/TitlePag'
 import Movie from '../Movie/Movie'
-import '../Select/select.css'
 
 export default function Select(){
     const [objectFilms, setObjectFilms] = useState([]);
@@ -13,9 +13,17 @@ export default function Select(){
     return(
         <>
         <TitlePag title={'Selecione o filme'}/>
-        <div className='all-films'>
+        <AllFilms>
             {objectFilms.map((movi) =>  <Movie key={movi.id} objectFilm={movi} /> )}
-        </div>
+        </AllFilms>
         </>
     )
 }
+const AllFilms =  styled.div`
+    margin: 25px 0px;
+    width: 100%;
+    display: flex;
+    justify-content:space-evenly;
+    flex-wrap: wrap;
+    height: 80vh;
+    overflow: auto;`;

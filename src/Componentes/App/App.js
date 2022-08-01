@@ -1,11 +1,11 @@
 import { BrowserRouter ,Routes, Route } from "react-router-dom";
-import Banner from '../Banner/Banner'
-import Select from '../Select/Select'
-import Brand from '../Brand/Brand'
-import Chairs from '../Chairs/Chairs'
-import Confirmation from "../Confirmation/Confirmation";
+import Banner from '../../Componentes/Banner/Banner'
+import Select from '../../Componentes/Select/Select'
+import Brand from '../../Componentes/Brand/Brand'
+import Chairs from '../../Componentes/Chairs/Chairs'
+import Confirmation from "../../Componentes/Confirmation/Confirmation";
  
-import '../App/reset.css'
+import './reset.css'
 
 export default function App(){
     return(

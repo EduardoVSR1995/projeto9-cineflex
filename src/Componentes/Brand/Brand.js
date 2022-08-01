@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from 'react';
-import TitlePag from "../TitlePag/TitlePag";
-import BottomImg from "../BottomImg/BottomImg";
-import Mark from "../Mark/Mark";
+import TitlePag from "../../Componentes/TitlePag/TitlePag";
+import BottomImg from "../../Componentes/BottomImg/BottomImg";
+import Mark from "../../Componentes/Mark/Mark";
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -29,14 +29,13 @@ export default function Brand(){
 }
 
 const Container = styled.div`
-    margin-top: 25px;
+    margin-top: 15px;
     margin-left: 20px;
-    height: 300px;
+    height: 330px;
     overflow: auto;
     
     h1{
         margin-bottom: 150px;
-        overflow: auto;
         height: 100%;
 
     }

@@ -17,7 +17,7 @@ return(
         <h4>   
             <img src={image}/>
         </h4>
-        <p>{title}{obj.day.weekday.length !=0 ?  " - "+obj.day.weekday+" - " : "" } {obj.name.length  !=0 ? obj.name : "" }</p>
+        <p>{title}<br/>{obj.day.weekday.length !=0 ?  obj.day.weekday+" - " : "Loading..." } {obj.name.length  !=0 ? obj.name : "Loading..." }</p>
     </Img> )
     }
 
@@ -26,7 +26,7 @@ const Img = styled.li`
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    padding-left: 20px;
+    padding-left: 10px;
     width: 100%;
     height: 117px;
     position: fixed;
@@ -35,20 +35,25 @@ const Img = styled.li`
     background-color: #DFE6ED;
     
 p{  
-    margin-left: 15px ;
+    box-sizing: border-box;
+    padding-left: 10px;
+    width: 90%;
+    margin-left: 1px ;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 26px;
     color: #293845;
-    text-align: center;
+    justify-content: flex-start;
 }
 h4{
+    box-sizing: border-box;
+    padding: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 89px;
-    width: 80px;
+    width: 64px;
     background: #FFFFFF;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 2px;
@@ -56,7 +61,7 @@ h4{
 }
 
 img{
-    width: 48px;
-    height: 72px;
+    width: 95%;
+    height: 95%;
 }
 `;

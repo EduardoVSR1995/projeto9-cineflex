@@ -7,7 +7,7 @@ export default function TitlePag({title}){
 }
 
 const Title = styled.div`
-    margin-top: 10px;
+    margin-top: 60px;
     height: 67px;
     font-family: 'Roboto';
     font-style: normal;

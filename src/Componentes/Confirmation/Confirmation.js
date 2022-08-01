@@ -14,8 +14,9 @@ export default function Confirmation(){
             
 
             <b> Ingressos</b>
-            {state.request.cadeira.map((e)=><p key={e+1000000} >A assento {e} </p> )}
-
+            <MiniContainer>
+                {state.request.cadeira.map((e)=><p key={e+1000000} >Assento {e} </p> )}
+            </MiniContainer>
             <b>Comprador</b>
             <p>Nome: {state.request.name}</p>
             <p>CPF: {state.request.cpf}</p>
@@ -25,12 +26,20 @@ export default function Confirmation(){
         </Container>
     )
 }
+const MiniContainer = styled.div`
+    max-height: 100px;
+    width: 200px;
+    overflow: auto;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+`;
 
 const Container = styled.div`
     padding: 30px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
     button{
         display: flex;
@@ -93,7 +102,7 @@ const Container = styled.div`
 
 const Topo = styled.div`
     margin-top: 60px;
-    width: 60%;
+    width: 100%;
     text-align: center;
     font-family: 'Roboto';
     font-style: normal;
@@ -102,9 +111,11 @@ const Topo = styled.div`
     line-height: 28px;
     display: flex;
     align-items: center;
+    justify-content: center;
     letter-spacing: 0.04em;
 `;
 const Title = styled.div`
+    width: 190px;
     margin-top: 10px;
     height: 67px;
     font-family: 'Roboto';
@@ -112,9 +123,6 @@ const Title = styled.div`
     font-weight: 700;
     font-size: 24px;
     line-height: 28px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
     letter-spacing: 0.04em;
     color: #247A6B;
 ;

@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";   
 import { useState, useEffect} from 'react';
-import TitlePag from "../TitlePag/TitlePag";
-import BottomImg from "../BottomImg/BottomImg";
+import TitlePag from "../../Componentes/TitlePag/TitlePag";
+import BottomImg from "../../Componentes/BottomImg/BottomImg";
 import Bal from "../Bal/Bal";
 import styled from 'styled-components';
 import axios from 'axios';
@@ -18,12 +18,20 @@ const [ request , setRequest] = useState({ids:[],name:"",cpf:0, cadeira:[]});
     let navigate = useNavigate();
 
     function markChair (event){
-        event.preventDefault();
+        if(request.ids.length === 0){
+            event.preventDefault();
+            return alert("Escolha uma cadeira");
+            
+        }
+        else{
+        
         const requisicao = axios.post(`https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many`, {ids: request.ids, name: request.name , cpf: request.cpf});
         requisicao.then(navigate("/sucesso/" , {state:{request , objectFilm} }));
         requisicao.catch(()=>alert("Algo de errado não esta certo"))
-        
+        }        
     }
+
+    
     return(
         <>
         <TitlePag title={'Selecione o(s) assento(s)'} />
@@ -38,7 +46,7 @@ const [ request , setRequest] = useState({ids:[],name:"",cpf:0, cadeira:[]});
                 Nome do comprador:
                 <input type={"text"} value={request.name} placeholder={"Digite seu nome..." } onChange={e => setRequest({...request ,name: e.target.value})} required/> <br/>
                 CPF do comprador:
-                <input type={"number"} value={request.cpf} placeholder={"Digite seu CPF..." } onChange={e => setRequest({...request , cpf: e.target.value})} required/>
+                <input type={"text"} maxLength="14" required pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}"  value={request.cpf} placeholder={"Digite seu CPF..." } onChange={e => setRequest({...request , cpf: e.target.value})} />
                  <h2><button type="submit" > Reservar assento(s) </button> </h2>
             </form>
             </Container1>
@@ -52,26 +60,29 @@ const [ request , setRequest] = useState({ids:[],name:"",cpf:0, cadeira:[]});
 }
 
 const Allcontainer = styled.div`
+    margin: 15px;
     overflow: scroll;
     height: 60vh;
 `;
 
 const Container1=styled.div`
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
+   
     display: flex;
     align-items: center;
-    color: #293845;
-    margin-top: 60px;
-    
-    form{
-        margin-left:20px;
-    }
 
+
+    form{
+        color: #293845;
+        margin-top: 60px;
+        width: 100%;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        width: 100%;
+    }
     h2{        
-        width: 100vw;
+        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -126,6 +137,16 @@ const ContainerLegend = styled.div`
     width: 100%;
     display: flex;
     justify-content:space-around;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.013em;
+
+    color: #4E5A65;
 
 
 `;
@@ -133,8 +154,6 @@ const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 20px 0px ;
-
 `;
 const Balls =styled.div`
     display: flex;

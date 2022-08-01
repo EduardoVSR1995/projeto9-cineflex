@@ -1,21 +1,23 @@
-import { useParams, useNavigate } from "react-router-dom";   
+import { useParams, useNavigate, useLocation } from "react-router-dom";   
 import { useState, useEffect} from 'react';
 import TitlePag from "../../Componentes/TitlePag/TitlePag";
 import BottomImg from "../../Componentes/BottomImg/BottomImg";
 import Bal from "../Bal/Bal";
 import styled from 'styled-components';
 import axios from 'axios';
+import image from '../../image/voltar.png'
 
 
 export default function Brand(){
 const {sessaoId} = useParams();
-const [ request , setRequest] = useState({ids:[],name:"",cpf:0, cadeira:[]});
-   const [objectFilm, setObjectFilm] = useState([]);
+const {state} = useLocation();
+let navigate = useNavigate();
+    const [ request , setRequest] = useState({ids:[],name:"",cpf:0, cadeira:[]}); 
+    const [objectFilm, setObjectFilm] = useState([]);
     useEffect(() => {
 		const objects = axios.get(` https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${sessaoId}/seats`);
 		objects.then((answer) => {setObjectFilm(answer.data)});
 	}, []);
-    let navigate = useNavigate();
 
     function markChair (event){
         if(request.ids.length === 0){
@@ -26,15 +28,14 @@ const [ request , setRequest] = useState({ids:[],name:"",cpf:0, cadeira:[]});
         else{
         
         const requisicao = axios.post(`https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many`, {ids: request.ids, name: request.name , cpf: request.cpf});
-        requisicao.then(navigate("/sucesso/" , {state:{request , objectFilm} }));
+        requisicao.then(navigate("/sucesso" , {state:{request , objectFilm, sessaoId, state } }));
         requisicao.catch(()=>alert("Algo de errado não esta certo"))
         }        
     }
-
-    
     return(
         <>
         <TitlePag title={'Selecione o(s) assento(s)'} />
+        <Img onClick={()=> navigate('/filme/'+ state , {state:{state}} ) } src={image}/>
         <Allcontainer>
             <Container>
                 {objectFilm.length === 0 ? "loading..." : objectFilm.seats.map((value)=> <Bal key={value.id} value={value} request={request} setRequest={setRequest} /> )}
@@ -54,10 +55,15 @@ const [ request , setRequest] = useState({ids:[],name:"",cpf:0, cadeira:[]});
         </Allcontainer>
         </>
     )
-
-
-
 }
+
+const Img = styled.img`
+    position: fixed;
+    width: 25px;
+    top: 20px;
+    left: 20px;
+`;
+
 
 const Allcontainer = styled.div`
     margin: 15px;

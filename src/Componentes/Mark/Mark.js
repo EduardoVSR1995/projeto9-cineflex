@@ -1,15 +1,20 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from 'styled-components';
 
 
-export default function Mark({value}){
+export default function Mark({value, filmId}){
+    let navigate = useNavigate();
+
     return(
         <Container>
             <pre>{value.weekday} - {value.date}</pre>
-            {value.showtimes.map((time,index)=> <Link key={value.showtimes[index].id} to={"/sessao/"+value.showtimes[index].id}><Botton>{time.name}</Botton></Link>)}
+            {value.showtimes.map((time,index)=> <Direction key={value.showtimes[index].id} onClick={()=> navigate("/sessao/"+value.showtimes[index].id, {state: filmId })}><Botton>{time.name}</Botton></Direction>)}
         </Container>
     );
 }
+const Direction = styled.div`
+
+`;
 
 const Container = styled.div`
 

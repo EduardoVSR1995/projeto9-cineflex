@@ -2,9 +2,11 @@ import styled from 'styled-components'
 
 export default function Banner(){
     return(
+        <>
         <Container>
         CINEFLEX
         </Container>
+        </>
     )
 }
 

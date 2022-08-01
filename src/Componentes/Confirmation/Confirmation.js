@@ -1,10 +1,13 @@
-import {Link, useLocation } from "react-router-dom";   
+import {Link, useLocation, useNavigate } from "react-router-dom";   
 import styled from "styled-components"
+import image from '../../image/voltar.png'
 
 export default function Confirmation(){
     const {state} = useLocation();
+    let navigate = useNavigate();
     return(
         <Container>
+            <Img onClick={()=> navigate("/sessao/"+state.sessaoId,{state:{state}})} src={image}/>
             <Topo>
                 <Title>Pedido feito com sucesso!</Title>
             </Topo>
@@ -26,6 +29,15 @@ export default function Confirmation(){
         </Container>
     )
 }
+
+const Img = styled.img`
+    position: fixed;
+    width: 25px;
+    top: 20px;
+    left: 20px;
+`;
+
+
 const MiniContainer = styled.div`
     max-height: 100px;
     width: 200px;

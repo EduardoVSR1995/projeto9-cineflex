@@ -36,7 +36,7 @@ export default function Brand(){
 const Container = styled.div`
     margin-top: 15px;
     margin-left: 20px;
-    height: 63vh;
+    height: 60vh;
     overflow: auto;
     
     h1{

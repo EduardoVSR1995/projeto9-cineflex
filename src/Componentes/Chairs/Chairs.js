@@ -15,7 +15,7 @@ let navigate = useNavigate();
     const [ request , setRequest] = useState({ids:[],name:"",cpf:0, cadeira:[]}); 
     const [objectFilm, setObjectFilm] = useState([]);
     useEffect(() => {
-		const objects = axios.get(` https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${sessaoId}/seats`);
+		const objects = axios.get(` https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${sessaoId}/seats`);
 		objects.then((answer) => {setObjectFilm(answer.data)});
 	}, []);
     function markChair (event){
@@ -27,7 +27,7 @@ let navigate = useNavigate();
         else{
             
 
-        const requisicao = axios.post(`https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many`, {ids: request.ids, name: request.name , cpf: request.cpf.replace(/[^0-9]/g, '')});
+        const requisicao = axios.post(`https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many`, {ids: request.ids, name: request.name , cpf: request.cpf.replace(/[^0-9]/g, '')});
         requisicao.then(navigate("/sucesso" , {state:{request , objectFilm, sessaoId, state } }));
         requisicao.catch(()=>alert("Algo de errado não esta certo"))
         }        

@@ -12,7 +12,7 @@ export default function Brand(){
     const {imageId} = useParams();
    const [objectFilm, setObjectFilm] = useState([]);
     useEffect(() => {
-		const objects = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/movies/${isNaN(parseInt(imageId)) ? state.state.state.state : imageId }/showtimes`);
+		const objects = axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/movies/${isNaN(parseInt(imageId)) ? state.state.state.state : imageId }/showtimes`);
 		objects.then((answer) => {setObjectFilm(answer.data)});
 	}, []);
     let navigate = useNavigate(); 
